@@ -13,15 +13,15 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const https = require("https");
 const fs = require("fs");
 
-var key= fs.readFileSync( __dirname + '/certsFiles/selfsigned.key');
-var cert= fs.readFileSync (__dirname + '/certsFiles/selfsigned.crt');
+//var key= fs.readFileSync( __dirname + '/certsFiles/selfsigned.key');
+//var cert= fs.readFileSync (__dirname + '/certsFiles/selfsigned.crt');
 
-var credentials = {
-	  key: key,
-	  cert: cert
-};
+//var credentials = {
+//	  key: key,
+//	  cert: cert
+//};
 https
-  .createServer(credentials,app)
+  .createServer(app)
   .listen(4000, ()=>{
 	      console.log('server is runing at port 4000')
 	    });
