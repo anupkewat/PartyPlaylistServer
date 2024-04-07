@@ -26,10 +26,10 @@ const fs = require("fs");
 // 	      console.log('server is runing at port 4000')
 // 	    });
 
-const PORT  = process.env.PORT || 4000;
+const PORT  =  4000 || process.env.PORT ;
 https
   .createServer(app)
-  .listen(process.env.PORT, ()=>{
+  .listen(process.env.PORT , ()=>{
 	      console.log(`server is runing at port ${PORT}`)
 	    });
 
@@ -99,7 +99,7 @@ const extractTrackInfo = (apiResponse) => {
   return trackInfoArray;
 };
 
-app.get('/', (req, res) =>{
+app.get('/test', (req, res) =>{
 	console.log('test');
   res.send('This is a test endpoint!');
 });
