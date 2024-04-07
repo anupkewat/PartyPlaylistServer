@@ -10,6 +10,22 @@ const playlistModel = require('./schemas')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))  
 
+const https = require("https");
+const fs = require("fs");
+
+var key= fs.readFileSync( __dirname + '/certsFiles/selfsigned.key');
+var cert= fs.readFileSync (__dirname + '/certsFiles/selfsigned.crt');
+
+var credentials = {
+	  key: key,
+	  cert: cert
+};
+https
+  .createServer(credentials,app)
+  .listen(4000, ()=>{
+	      console.log('server is runing at port 4000')
+	    });
+
 const DBpass = process.env.MONGODB_PASS
 const uri =  `mongodb+srv://superuser:${DBpass}@cluster0.6ynczxx.mongodb.net/?retryWrites=true&w=majority`
 mongoose.connect(uri);
@@ -73,6 +89,11 @@ const extractTrackInfo = (apiResponse) => {
 
   return trackInfoArray;
 };
+
+app.get('/', (req, res) =>{
+	console.log('test');
+  res.send('This is a test endpoint!');
+});
 
 app.get("/getworkinginfo" , async (req,res) => {
   const partyName = req.query.partyName
@@ -647,7 +668,7 @@ async function reorderPlaylistTracks(spotifyApi, playlistId, sortedTracks) {
   }
 }
 
-
-
-
-app.listen(3001)
+//app.listen(3000, function(err){
+    //if (err) console.log("Error in server setup")
+  //  console.log("Server listening on Port", 3000);
+//})
