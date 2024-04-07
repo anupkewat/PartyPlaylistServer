@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // 	      console.log('server is runing at port 4000')
 // 	    });
 
-// const PORT  =  4000 || process.env.PORT ;
+const PORT  =  4000 || process.env.PORT ;
 // https
 //   .createServer(app)
 //   .listen(process.env.PORT , ()=>{
