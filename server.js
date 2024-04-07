@@ -10,8 +10,8 @@ const playlistModel = require('./schemas')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))  
 
-const https = require("https");
-const fs = require("fs");
+// const https = require("https");
+// const fs = require("fs");
 
 //var key= fs.readFileSync( __dirname + '/certsFiles/selfsigned.key');
 //var cert= fs.readFileSync (__dirname + '/certsFiles/selfsigned.crt');
@@ -26,12 +26,12 @@ const fs = require("fs");
 // 	      console.log('server is runing at port 4000')
 // 	    });
 
-const PORT  =  4000 || process.env.PORT ;
-https
-  .createServer(app)
-  .listen(process.env.PORT , ()=>{
-	      console.log(`server is runing at port ${PORT}`)
-	    });
+// const PORT  =  4000 || process.env.PORT ;
+// https
+//   .createServer(app)
+//   .listen(process.env.PORT , ()=>{
+// 	      console.log(`server is runing at port ${PORT}`)
+// 	    });
 
 
 
@@ -677,7 +677,7 @@ async function reorderPlaylistTracks(spotifyApi, playlistId, sortedTracks) {
   }
 }
 
-//app.listen(3000, function(err){
-    //if (err) console.log("Error in server setup")
-  //  console.log("Server listening on Port", 3000);
-//})
+app.listen(PORT, function(err){
+    if (err) console.log("Error in server setup")
+   console.log("Server listening on Port", 3000);
+})
