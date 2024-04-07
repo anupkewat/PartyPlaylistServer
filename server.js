@@ -20,11 +20,20 @@ const fs = require("fs");
 //	  key: key,
 //	  cert: cert
 //};
+// https
+//   .createServer(app)
+//   .listen(4000, ()=>{
+// 	      console.log('server is runing at port 4000')
+// 	    });
+
+const PORT  = process.env.PORT || 4000;
 https
   .createServer(app)
-  .listen(4000, ()=>{
-	      console.log('server is runing at port 4000')
+  .listen(process.env.PORT, ()=>{
+	      console.log(`server is runing at port ${PORT}`)
 	    });
+
+
 
 const DBpass = process.env.MONGODB_PASS
 const uri =  `mongodb+srv://superuser:${DBpass}@cluster0.6ynczxx.mongodb.net/?retryWrites=true&w=majority`
