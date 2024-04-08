@@ -512,7 +512,7 @@ app.post("/createplaylist", async (req, res) => {
       partyName: partyName,
     });
     // console.log(playlistEntry)
-    res.status(201).json({ success: true, message: 'Playlist created and logged to DB'});
+    res.status(201).json({playlistEntry : playlistEntry, success: true, message: 'Playlist created and logged to DB'});
 
   } catch (err) {
     console.log('Something went wrong!', err);
